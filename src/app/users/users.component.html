@@ -1,0 +1,141 @@
+<div class="starter-template">
+	<div class="row user_header">
+		<div class="col-md-10">
+			<h2>User Directory</h2>
+		</div>
+		<div class="col-md-2">
+			<div class="btn-group">
+				<label class="btn-primary btn-outline-primary"
+					ngbButtonLabel (click)="openAddUserModal(addUserModal)"> <fa
+						name="plus-circle"></fa> Add new User
+				</label>
+			</div>
+		</div>
+	</div>
+	<div class="row user_body">
+		<div class="col-md-4 offset-md-5 user_message" *ngIf="users.length==0">
+			<h5>No Users Present.</h5>
+		</div>
+		<div class="col-md-12">
+			<table class="table table-hover" *ngIf="users.length>0">
+				<thead>
+					<tr>
+						<th>USER NAME</th>
+						<th>ADDRESS</th>
+						<th>CONTACT</th>
+						<th>EMAIL</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let user of users">
+						<td><fa name="user"></fa> {{user.username}}</td>
+						<td style="max-width: 450px">{{user.address}}</td>
+						<td>{{user.contact}}</td>
+						<td>{{user.email}}</td>
+						<td>
+							<button type="button" class="btn btn-outline-secondary"
+								[ngbPopover]="popContent" triggers="manual" #p="ngbPopover"
+								(click)="p.open()" placement="bottom">
+								<fa name="ellipsis-h"></fa>
+							</button> <ng-template #popContent>
+							<button class="btn back-white"
+								(click)="openEditUserModal(editUserModal,user);p.close()">
+								<fa name="edit"></fa>
+								Edit User Details
+							</button>
+							<br>
+							<button class="btn back-white"
+								(click)="deleteUser(user);p.close()">
+								<fa name="trash"></fa>
+								Delete User
+							</button>
+							</ng-template>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+<ng-template #addUserModal let-c="close" let-d="dismiss">
+<div class="modal-header">
+	<h4 class="modal-title">Add New User</h4>
+	<button type="button" class="close" aria-label="Close"
+		(click)="d('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<form [formGroup]="myForm" (ngSubmit)="addUser(myForm,d)" novalidate>
+	<div class="modal-body">
+
+		<div>
+			<label class="col-xs-3">User Name*</label> <input
+				class="form-control" type="text" formControlName="username"
+				placeholder="Enter username" />
+		</div>
+		<div>
+			<label class="col-xs-3">Address*</label>
+			<textarea class="form-control" formControlName="address"
+				placeholder="Enter address"></textarea>
+		</div>
+		<div>
+			<label class="col-xs-3">Contact*</label> <input class="form-control"
+				type="number" formControlName="contact"
+				placeholder="Enter contact no" />
+		</div>
+		<div>
+			<label class="col-xs-3">Email*</label> <input class="form-control"
+				type="email" formControlName="email" placeholder="Enter email" />
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-outline-dark"
+			[disabled]="myForm.invalid">Add New User</button>
+	</div>
+</form>
+</ng-template>
+
+
+<ng-template #editUserModal let-c="close" let-d="dismiss">
+<div class="modal-header">
+	<h4 class="modal-title">Edit User</h4>
+	<button type="button" class="close" aria-label="Close"
+		(click)="d('Cross click')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+<form [formGroup]="myEditForm" (ngSubmit)="editUser(myEditForm,d)"
+	novalidate>
+	<div class="modal-body">
+
+		<div>
+			<label class="col-xs-3">User Name*</label> <input
+				class="form-control" type="text" formControlName="username"
+				placeholder="Enter username" />
+		</div>
+		<div>
+			<label class="col-xs-3">Address*</label>
+			<textarea class="form-control" formControlName="address"
+				placeholder="Enter address"></textarea>
+		</div>
+		<div>
+			<label class="col-xs-3">Contact*</label> <input class="form-control"
+				type="number" formControlName="contact"
+				placeholder="Enter contact no" />
+		</div>
+		<div>
+			<label class="col-xs-3">Email*</label> <input class="form-control"
+				type="email" formControlName="email" placeholder="Enter email" />
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-outline-dark"
+			[disabled]="myEditForm.invalid">Save Changes</button>
+	</div>
+</form>
+</ng-template>

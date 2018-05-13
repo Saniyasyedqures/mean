@@ -1,0 +1,36 @@
+<div class="container header_nav">
+	<header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">
+		<a class="navbar-brand" [routerLink]="['/']"
+			(click)="navbarCollapsed = true"> <fa name="bars"></fa>Assignement
+		</a>
+		<button class="navbar-toggler navbar-toggler-right" type="button"
+			(click)="navbarCollapsed = !navbarCollapsed"
+			[attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="navbar-collapse" [ngbCollapse]="navbarCollapsed"
+			id="navbarContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-link"
+					(click)="navbarCollapsed = true">Tasks</a></li>
+				<li class="nav-item active" [routerLinkActive]="['active']"><a
+					class="nav-link" [routerLink]="['/users']"
+					(click)="navbarCollapsed = true">Users</a></li>
+				<li class="nav-item"><a class="nav-link"
+					(click)="navbarCollapsed = true">Acivity</a></li>
+
+				<li class="nav-item"><a class="nav-link"
+					(click)="navbarCollapsed = true">Members</a></li>
+			</ul>
+
+			<span class="github-buttons d-none d-lg-inline"> <a><fa
+						name="user"></fa> &nbsp;</a> <a>&nbsp; <fa name="cog"
+						animation="spin"></fa> Support &nbsp;
+			</a> <a>&nbsp; <fa name="comment"></fa> &nbsp;
+			</a>
+			</span>
+		</div>
+	</header>
+</div>

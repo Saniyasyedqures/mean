@@ -1,6 +1,6 @@
 # mean
 
-Technologies used Bootstrap/Angular4/Nodejs/Moongoose/Mongodb
+Technologies used Bootstrap/Angular4/Nodejs/Mongodb(Moongoose)
 
 Run following commands:
 

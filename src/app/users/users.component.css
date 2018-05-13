@@ -1,0 +1,38 @@
+.user_header{
+	background:white;
+	padding: 25px 0px 25px 0px;
+	border-right: 1px solid lightgrey;
+	border-left: 1px solid lightgrey;
+}
+
+.modal-header{
+	background-color:#f4f4f4 ;
+}
+
+.modal-body{
+	background-color:#f4f4f4 ;
+}
+
+.modal-footer{
+	background-color:#f4f4f4 ;
+}
+
+.user_body{
+	background:#f4f4f4;
+	min-height: 500px;
+	border-right: 1px solid lightgrey;
+	border-left: 1px solid lightgrey;
+}
+
+.user_message{
+	padding-top: 100px;
+}
+
+.back-white{
+	background:white;
+}
+
+.btn:focus {
+    -webkit-box-shadow: none;
+ }   
+
